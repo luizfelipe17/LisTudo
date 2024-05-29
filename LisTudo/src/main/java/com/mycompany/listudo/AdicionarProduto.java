@@ -3,7 +3,7 @@ package com.mycompany.listudo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class AdicionarProduto implements I_AdicionarProduto{
+public class AdicionarProduto implements I_AdicionarProduto {
 
     Scanner ler = new Scanner(System.in);
     LisTudo lista = new LisTudo();
@@ -104,10 +104,9 @@ public class AdicionarProduto implements I_AdicionarProduto{
         String produtos = "A";//INICIAR WHILE
         int contador = 0;
 
-        while (!produtos.equalsIgnoreCase("Q")) {
+        do {
 
-            System.out.println("\nQ - SAIR");// USUARIO INFORMA "Q" CASO DESEJA SAIR
-            System.out.print("Item " + (contador + 1) + ": ");
+            System.out.print("Q - SAIR / Item " + (contador + 1) + ": ");
             produtos = ler.nextLine();
 
             if (!produtos.equalsIgnoreCase("Q")) {
@@ -122,7 +121,7 @@ public class AdicionarProduto implements I_AdicionarProduto{
 
             }
 
-        }
-    }
+        } while (!produtos.equalsIgnoreCase("Q"));
 
+    }
 }
