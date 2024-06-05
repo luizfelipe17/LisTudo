@@ -4,7 +4,12 @@
  */
 package frmtelalogin;
 
+import DAO.CadastroDAO;
+import conexao.ConexaoBD;
 import conexao.LoginMetodos;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,7 +41,7 @@ public class FrmCadastro extends javax.swing.JFrame {
         usuarioCadastro = new javax.swing.JTextField();
         btnCadastro = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        senhaCadastro = new javax.swing.JTextField();
+        senhaCadastro = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,20 +67,19 @@ public class FrmCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(senhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel4)
-                                .addComponent(nomeCadastro)
-                                .addComponent(emailCadastro)
-                                .addComponent(usuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(btnCadastro)))
+                        .addComponent(btnCadastro))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(nomeCadastro)
+                            .addComponent(emailCadastro)
+                            .addComponent(usuarioCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                            .addComponent(senhaCadastro))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -95,9 +99,9 @@ public class FrmCadastro extends javax.swing.JFrame {
                 .addComponent(usuarioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(senhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(senhaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(btnCadastro)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -107,6 +111,8 @@ public class FrmCadastro extends javax.swing.JFrame {
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
        
+        FrmViewLogin viewLogin = new FrmViewLogin();
+        
         LoginMetodos loginMetodos = new LoginMetodos();
         
         String nome = nomeCadastro.getText();
@@ -118,6 +124,11 @@ public class FrmCadastro extends javax.swing.JFrame {
         loginMetodos.setEmail(email);
         loginMetodos.setNomeUsuario(usuario);
         loginMetodos.setSenha(senha);
+        
+        ConexaoBD conexao = new ConexaoBD();
+        CadastroDAO cadastro = new CadastroDAO();
+        
+        viewLogin.setVisible(true);
         
     }//GEN-LAST:event_btnCadastroActionPerformed
 
@@ -164,7 +175,7 @@ public class FrmCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nomeCadastro;
-    private javax.swing.JTextField senhaCadastro;
+    private javax.swing.JPasswordField senhaCadastro;
     private javax.swing.JTextField usuarioCadastro;
     // End of variables declaration//GEN-END:variables
 }

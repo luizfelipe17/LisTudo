@@ -1,20 +1,29 @@
 package conexao;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class ConexaoBD {
     
-    public Connection conexaoBD(){
+    private static final String URL = "jdbc:mysql://localhost:3306/loginlistudo";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "1704";
+    
+    public static Connection conexaoBD() throws SQLException{
         
         Connection conn = null;
         
         try {
             
-            String url = "jdbc:mysql://localhost:3306/loginlistudo?user=root&password=1704";
-            conn = DriverManager.getConnection(url);
-           
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            
+            
         } catch (Exception erro) {
             
             JOptionPane.showMessageDialog(null, "CONEXÃO BANCO DE DADOS: " + erro);
