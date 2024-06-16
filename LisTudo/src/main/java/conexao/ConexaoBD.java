@@ -8,7 +8,7 @@ public class ConexaoBD {
 
     private static final String URL = "jdbc:mysql://localhost:3306/loginlistudo";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "1704";
+    private static final String PASSWORD = "1234";
 
     public static Connection conexaoBD() {
 
